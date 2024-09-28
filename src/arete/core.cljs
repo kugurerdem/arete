@@ -21,12 +21,12 @@
    [:label "Your gender:"]
    [:label
     [:input {:type "radio" :name "gender" :value "male"
-             :checked (= @selected-gender "male")
-             :on-change #(reset! selected-gender "male")}] " Male"]
+             :checked (= @selected-gender :male)
+             :on-change #(reset! selected-gender :male)}] " Male"]
    [:label
     [:input {:type "radio" :name "gender" :value "female"
-             :checked (= @selected-gender "female")
-             :on-change #(reset! selected-gender "female")}] " Female"]
+             :checked (= @selected-gender :female)
+             :on-change #(reset! selected-gender :female)}] " Female"]
 
    [:br]
 
@@ -43,16 +43,18 @@
    [:br]
    [:label "Your age:"]
    [:input {:type "number"
-            :on-change #(reset! selected-age (-> % .-target .-value))}]
+            :on-change #(reset! selected-age (-> %
+                                                 .-target
+                                                 .-value
+                                                 int))}]
 
    [:br]
    [:label "Your bodyweight"]
    [:input {:type "number"
-            :on-change #(reset! selected-bodyweight (-> % .-target .-value))}]
-   [:div
-    [:p @selected-gender]]
-    [:p @selected-age]
-    [:p @selected-bodyweight]
+            :on-change #(reset! selected-bodyweight (-> %
+                                                        .-target
+                                                        .-value
+                                                        int))}]
    ])
 
 (defn mount [el]
