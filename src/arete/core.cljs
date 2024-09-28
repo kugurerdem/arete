@@ -1,12 +1,14 @@
 (ns ^:figwheel-hooks arete.core
   (:require
    [goog.dom :as gdom]
-   [reagent.core :as reagent :refer [atom]]
+   [reagent.core :as r]
    [reagent.dom :as rdom]))
 
-(defonce selected-gender (atom nil))
-(defonce selected-age (atom nil))
-(defonce selected-bodyweight (atom nil))
+(defonce selected-gender (r/atom :male))
+(defonce selected-table-type (r/atom :bw))
+(defonce selected-age (r/atom nil))
+(defonce selected-bodyweight (r/atom nil))
+
 
 (defn get-app-element []
   (gdom/getElement "app"))
@@ -25,6 +27,18 @@
     [:input {:type "radio" :name "gender" :value "female"
              :checked (= @selected-gender "female")
              :on-change #(reset! selected-gender "female")}] " Female"]
+
+   [:br]
+
+   [:label "Table type:"]
+   [:label
+    [:input {:type "radio" :name "table-type" :value "body-weight"
+             :checked (= @selected-table-type :bw)
+             :on-change #(reset! selected-table-type :bw)}] " Bodyweight"]
+   [:label
+    [:input {:type "radio" :name "table-type" :value "age"
+             :checked (= @selected-table-type :age)
+             :on-change #(reset! selected-table-type :age)}] " Age"]
 
    [:br]
    [:label "Your age:"]
