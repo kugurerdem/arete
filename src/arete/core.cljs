@@ -2,7 +2,9 @@
   (:require
    [goog.dom :as gdom]
    [reagent.core :as r]
-   [reagent.dom :as rdom]))
+   [reagent.dom :as rdom]
+   [clojure.string :as str]))
+
 
 (defonce selected-gender (r/atom :male))
 (defonce selected-table-type (r/atom :bw))
@@ -13,33 +15,40 @@
 (defn get-app-element []
   (gdom/getElement "app"))
 
+(defn radio-option [{:keys [value label selected-value]}]
+  [:label
+   [:input {:type "radio" :value value
+            :checked (= @selected-value value)
+            :on-change #(reset! selected-value value)}]
+   label])
+
+(defn option-selector [{:keys [name selected-value options]}]
+  [:div
+   [:label (str/capitalize name)]
+   (for [{:keys [value label]} options]
+     [radio-option {:value value
+                    :label label
+                    :selected-value selected-value
+                    :name name
+                    :key value}])])
+
 (defn app []
   [:div
    [:h1 "Arete!"]
    [:h3 "How strong you should be?"]
 
-   [:label "Your gender:"]
-   [:label
-    [:input {:type "radio" :name "gender" :value "male"
-             :checked (= @selected-gender :male)
-             :on-change #(reset! selected-gender :male)}] " Male"]
-   [:label
-    [:input {:type "radio" :name "gender" :value "female"
-             :checked (= @selected-gender :female)
-             :on-change #(reset! selected-gender :female)}] " Female"]
+   [option-selector {:selected-value selected-gender
+                     :name "gender"
+                     :options [{:value :male :label " Male"}
+                               {:value :female :label " Female"}]}]
 
-   [:br]
+   [option-selector {:selected-value selected-table-type
+                     :name "table type"
+                     :options [{:value :bw :label " Bodyweight"}
+                               {:value :age :label " Age"}]}]
 
-   [:label "Table type:"]
-   [:label
-    [:input {:type "radio" :name "table-type" :value "body-weight"
-             :checked (= @selected-table-type :bw)
-             :on-change #(reset! selected-table-type :bw)}] " Bodyweight"]
-   [:label
-    [:input {:type "radio" :name "table-type" :value "age"
-             :checked (= @selected-table-type :age)
-             :on-change #(reset! selected-table-type :age)}] " Age"]
-
+   ; TODO: Get rid of repetition
+   ; Conditionally render
    [:br]
    [:label "Your age:"]
    [:input {:type "number"
