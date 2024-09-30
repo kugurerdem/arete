@@ -42,13 +42,15 @@
             :on-change #(reset! state (-> % .-target .-value int))}]])
 
 (defn create-standards-table-by [[gender type value]]
-  (map
-    (fn [[exercise standards]]
-      (->> (get-in standards [gender type])
-           (sort-by #(Math/abs (- value (:value %))))
-           first
-           (conj {:exercise exercise})))
-    @exercise-map))
+  (->> @exercise-map
+       (map
+         (fn [[exercise standards]]
+           (->> (get-in standards [gender type])
+                (sort-by #(Math/abs (- value (:value %))))
+                first
+                (conj {:exercise exercise})))
+         )
+       (sort-by #(- (:master %)))))
 
 (defn table-component [{:keys [headers data]}]
   [:table
