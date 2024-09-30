@@ -1,7 +1,7 @@
+- Implement KG / LBS selection option
+- Sort exercises from hard to easy
 - Add data to the project
 - Add util functions for parsing the data based on bw, age, gender
 - Write test functions for the util functions written
-- Implement showing results
-- Improve styling of the project
 - Add a README
 - Publish the project
