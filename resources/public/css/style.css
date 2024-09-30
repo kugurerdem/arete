@@ -1,5 +1,38 @@
-/* some style */
+* { text-align: center; }
 
-h1 {
-    color: red;
+body {
+    background-color: #eee;
+}
+
+div#app {
+    width: 720px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #fff;
+    box-shadow: 0 0 6px rgb(0 0 0 / 20%);
+}
+
+
+@media screen and (max-width: 720px) {
+    main {
+        width: 100%; /* Adjusted width for smaller screens */
+    }
+}
+
+table {
+    margin: 1em auto;
+    background: #04ee6d;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 8px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fff;
 }
