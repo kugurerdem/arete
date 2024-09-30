@@ -15,6 +15,7 @@
 
 (defonce selected-gender (r/atom :male))
 (defonce selected-table-type (r/atom :bw))
+(defonce selected-weight-unit (r/atom :kg))
 (defonce selected-value (r/atom nil))
 
 (defn radio-option [{:keys [value label selected-value]}]
@@ -73,13 +74,22 @@
                      :options [{:value :bw :label " Bodyweight"}
                                {:value :age :label " Age"}]}]
 
-   (if (= @selected-table-type :age)
-     [input-with-label {:label "Your age:" :state selected-value}]
-     [input-with-label {:label "Your bodyweight" :state selected-value}])
+   [option-selector {:selected-value selected-weight-unit
+                     :name "unit"
+                     :options [{:value :kg :label " kg"}
+                               {:value :lbs :label " lbs"}]}]
 
-   [table-component {:headers [:exercise :novice :disciple :artisan :master :arete]
-                     :data (create-standards-table-by
-                             [@selected-gender @selected-table-type @selected-value])}]
+   [input-with-label
+    {:label (if (= @selected-table-type :age)
+              "Your age:"
+              (str "Bodyweight (" (name @selected-weight-unit) ") "))
+     :state selected-value}]
+
+   [table-component
+    {:headers [:exercise :novice :disciple :artisan :master :arete]
+     :data (create-standards-table-by
+             [@selected-gender @selected-table-type
+              (* @selected-value (@selected-weight-unit {:lbs 1 :kg 2.2}))])}]
    ])
 
 (defn mount [el] (rdom/render [app] el))
