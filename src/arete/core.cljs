@@ -59,7 +59,11 @@
     (for [row data]
       [:tr
        (for [header headers]
-         [:td (get row header)])])]])
+         [:td (-> (get row header)
+                  (str)
+                  (str/replace #"[-:]" " ")
+                  (str/trim)
+                  (str/capitalize))])])]])
 
 (defn app []
   [:div
@@ -90,7 +94,7 @@
 
    [:h3 "Standards for You"]
    [table-component
-    {:headers [:exercise :novice :disciple :artisan :master :arete]
+    {:headers [:exercise :disciple :artisan :master]
      :data (create-standards-table-by
              [@selected-gender @selected-table-type
               (* @selected-value (@selected-weight-unit {:lbs 1 :kg 2.2}))])}]
