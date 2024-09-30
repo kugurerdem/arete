@@ -62,29 +62,31 @@
 (defn app []
   [:div
    [:h1 "Arete!"]
-   [:h3 "How strong you should be?"]
+   [:h3 "How strong you are?"]
 
-   [option-selector {:selected-value selected-gender
-                     :name "gender"
-                     :options [{:value :male :label " Male"}
-                               {:value :female :label " Female"}]}]
+   [:div#inputs
+    [option-selector {:selected-value selected-gender
+                      :name "gender"
+                      :options [{:value :male :label " Male"}
+                                {:value :female :label " Female"}]}]
 
-   [option-selector {:selected-value selected-table-type
-                     :name "table type"
-                     :options [{:value :bw :label " Bodyweight"}
-                               {:value :age :label " Age"}]}]
+    [option-selector {:selected-value selected-table-type
+                      :name "table type"
+                      :options [{:value :bw :label " Bodyweight"}
+                                {:value :age :label " Age"}]}]
 
-   [option-selector {:selected-value selected-weight-unit
-                     :name "unit"
-                     :options [{:value :kg :label " kg"}
-                               {:value :lbs :label " lbs"}]}]
+    [option-selector {:selected-value selected-weight-unit
+                      :name "unit"
+                      :options [{:value :kg :label " kg"}
+                                {:value :lbs :label " lbs"}]}]
 
-   [input-with-label
-    {:label (if (= @selected-table-type :age)
-              "Your age:"
-              (str "Bodyweight (" (name @selected-weight-unit) ") "))
-     :state selected-value}]
+    [input-with-label
+     {:label (if (= @selected-table-type :age)
+               "Your age:"
+               (str "Bodyweight (" (name @selected-weight-unit) ") "))
+      :state selected-value}]]
 
+   [:h3 "Standards for You"]
    [table-component
     {:headers [:exercise :novice :disciple :artisan :master :arete]
      :data (create-standards-table-by
