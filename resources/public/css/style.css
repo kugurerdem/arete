@@ -40,3 +40,36 @@ tbody tr:nth-child(odd) {
 tbody tr:nth-child(even) {
   background-color: #fff;
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  padding-left: 0.25em;
+  color: red;
+}
+
+.tooltip::after {
+  content: "(?)"; /* Display the tooltip symbol */
+  font-size: 0.8em; /* Slightly smaller than the normal text */
+  color: blue; /* Adjust color if needed */
+  margin-left: 0.3em; /* Space between the text and the symbol */
+}
+
+.tooltip .tooltiptext {
+    width: 120px;
+    visibility: hidden;
+    border-radius: 0.25em;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 0.5em;
+    left: 1.5em;
+    top: 1.5em;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

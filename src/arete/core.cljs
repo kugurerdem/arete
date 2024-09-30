@@ -4,6 +4,11 @@
             [reagent.dom :as rdom]
             [clojure.string :as str]))
 
+(def header-infos
+  {:disciple "Working out for about 6 months."
+   :artisan  "Working out for about 2 years."
+   :master   "Working out for approximately 5 years."})
+
 (defonce exercise-map (r/atom nil))
 
 (-> (js/fetch "exercises.json")
@@ -50,11 +55,17 @@
                 first
                 (conj {:exercise exercise})))
          )
-       (sort-by #(- (:master %)))))
+       (sort-by #(- (:disciple %)))))
+
+(defn tooltip [tooltiptext] [:span.tooltip [:span.tooltiptext tooltiptext]])
 
 (defn table-component [{:keys [headers data]}]
   [:table
-   [:thead [:tr (for [header headers] [:th (name header)])]]
+   [:thead
+    [:tr (for [header headers]
+           [:th (str/capitalize (name header))
+            (when-let [tooltip-text (header header-infos)]
+              [tooltip tooltip-text])])]]
    [:tbody
     (for [row data]
       [:tr
