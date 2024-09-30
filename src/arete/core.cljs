@@ -21,7 +21,10 @@
 (defonce selected-gender (r/atom :male))
 (defonce selected-table-type (r/atom :bw))
 (defonce selected-weight-unit (r/atom :kg))
-(defonce selected-value (r/atom nil))
+
+(def init-value 70)
+; https://en.wikipedia.org/wiki/Human_body_weight#Average_weight_around_the_world
+(defonce selected-value (r/atom init-value))
 
 (defn radio-option [{:keys [value label selected-value]}]
   [:label
@@ -44,6 +47,7 @@
   [:div
    [:label label]
    [:input {:type "number"
+            :value init-value
             :on-change #(reset! state (-> % .-target .-value int))}]])
 
 (defn create-standards-table-by [[gender type value]]
