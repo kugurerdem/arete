@@ -19,7 +19,10 @@ latest_commit=$(git rev-parse HEAD)
 echo "Building the project..."
 lein fig:build
 
-# Create and checkout to the orphan
+temp_dir=$(mktemp -d)
+cp -r ./resources/public/* $temp_dir
+
+# Checkout to the orphan branch, crete if not exists
 if git show-ref --verify --quiet refs/heads/gh-pages; then
     echo "Switching to the existing 'gh-pages' branch..."
     git checkout gh-pages
@@ -29,7 +32,7 @@ else
 fi
 
 echo "Adding files to the staging area..."
-git --work-tree=./resources/public add .
+git --work-tree=$temp_dir add .
 
 echo "Committing changes..."
 git commit -m "Deploy $latest_commit"
