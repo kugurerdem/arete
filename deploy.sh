@@ -17,6 +17,7 @@ fi
 latest_commit=$(git rev-parse HEAD)
 
 echo "Building the project..."
+lein clean
 lein fig:build
 
 temp_dir=$(mktemp -d)
