@@ -83,7 +83,12 @@
 (defn app []
   [:div
    [:h1 "Arete!"]
-   [:h3 "How strong you are?"]
+   [:h3 "Calisthenics standards for you"]
+
+   [:p
+    [:b "Disclaimer:"]
+    " Please note that although the data used here has been reviewed and adjusted for accuracy, it is randomly generated and may be inaccurate for certain exercises."
+    [:a {:href "https://www.github.com/kugurerdem/arete#disclaimer"} " (Read more) "]]
 
    [:div#inputs
     [option-selector {:selected-value selected-gender
