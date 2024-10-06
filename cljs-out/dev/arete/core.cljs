@@ -47,7 +47,7 @@
   [:div
    [:label label]
    [:input {:type "number"
-            :value init-value
+            :placeholder init-value
             :on-change #(reset! state (-> % .-target .-value int))}]])
 
 (defn create-standards-table-by [[gender type value]]

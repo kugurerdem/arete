@@ -106,7 +106,7 @@ var map__11291 = p__11290;
 var map__11291__$1 = cljs.core.__destructure_map(map__11291);
 var label = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11291__$1,cljs.core.cst$kw$label);
 var state = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__11291__$1,cljs.core.cst$kw$state);
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label,label], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$type,"number",cljs.core.cst$kw$value,arete.core.init_value,cljs.core.cst$kw$on_DASH_change,(function (p1__11289_SHARP_){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$label,label], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$type,"number",cljs.core.cst$kw$placeholder,arete.core.init_value,cljs.core.cst$kw$on_DASH_change,(function (p1__11289_SHARP_){
 return cljs.core.reset_BANG_(state,(p1__11289_SHARP_.target.value | (0)));
 })], null)], null)], null);
 });

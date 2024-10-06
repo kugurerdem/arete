@@ -44,6 +44,7 @@ cljs.core.cst$kw$dup = new cljs.core.Keyword(null,"dup","dup",556298533);
 cljs.core.cst$kw$key = new cljs.core.Keyword(null,"key","key",-1516042587);
 cljs.core.cst$sym$comp = new cljs.core.Symbol(null,"comp","comp",-1462482139,null);
 cljs.core.cst$sym$dispatch_DASH_fn = new cljs.core.Symbol(null,"dispatch-fn","dispatch-fn",-1401088155,null);
+cljs.core.cst$kw$placeholder = new cljs.core.Keyword(null,"placeholder","placeholder",-104873083);
 cljs.core.cst$sym$buffer = new cljs.core.Symbol(null,"buffer","buffer",-2037140571,null);
 cljs.core.cst$kw$disciple = new cljs.core.Keyword(null,"disciple","disciple",-1344613178);
 cljs.core.cst$kw$else = new cljs.core.Keyword(null,"else","else",-1508377146);
