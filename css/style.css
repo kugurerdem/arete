@@ -4,6 +4,13 @@ h1, h2, h3 {
 
 body { background-color: #eee; }
 
+p { padding-left: 2em; }
+
+a {
+    text-decoration: none;
+    color: #080;
+}
+
 div#app {
     width: 720px;
     margin: 0 auto;

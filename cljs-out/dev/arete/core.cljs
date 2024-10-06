@@ -83,9 +83,13 @@
 (defn app []
   [:div
    [:h1 "Arete!"]
-   [:p (repeat 20 "Lorem ipsum. ")]
+   [:h3 "Calisthenics standards for you"]
 
-   [:h3 "Standards for You"]
+   [:p
+    [:b "Disclaimer:"]
+    " Please note that although the data used here has been reviewed and adjusted for accuracy, it is randomly generated and may be inaccurate for certain exercises."
+    [:a {:href "https://www.github.com/kugurerdem/arete#disclaimer"} " (Read more) "]]
+
    [:div#inputs
     [option-selector {:selected-value selected-gender
                       :name "gender"
@@ -108,6 +112,7 @@
                (str "Bodyweight (" (name @selected-weight-unit) ") "))
       :state selected-value}]]
 
+   [:h3 "Standards for You"]
    [table-component
     {:headers [:exercise :disciple :artisan :master]
      :data (create-standards-table-by
