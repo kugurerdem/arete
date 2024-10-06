@@ -1,13 +1,9 @@
 # Arete
 
-Calisthenics standards for you.
-
-## Overview
-
 Arete is a web application that displays specific calisthenics movement
 standards according to a person's gender, age, and body weight.
 
-You can try out the [here](kugurerdem.github.io/arete).
+You can try out the application [here](https://kugurerdem.github.io/arete).
 
 ## Disclaimer
 
